@@ -8,7 +8,7 @@ RUN apt-get update
 
 RUN apt-get install ffmpeg libsm6 libxext6 wget unzip libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev curl python3-pip -y
 
-COPY requirements.txt .
+COPY . .
 
 RUN pip install -r requirements.txt
 
@@ -23,9 +23,5 @@ RUN mkdir /usr/bin/chromium
 RUN unzip chrome-linux64.zip -d /usr/bin/chromium/
 
 RUN chmod +777 /usr/bin/chromedriver-linux64/chromedriver
-
-RUN rm requirements.txt
-
-COPY . .
 
 CMD ["python3", "main.py"]
